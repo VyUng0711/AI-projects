@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c19e38a-ecfa-448f-8150-57c1dcb29461" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/move.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gomoku documentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gomoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/gomoku.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gomoku_paper.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,14 +48,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gomoku.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-350" />
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simulation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -77,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/move.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="-952">
               <caret line="104" column="14" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="14" />
             </state>
           </provider>
@@ -137,8 +130,8 @@
       <find>Board</find>
       <find>move</find>
       <find>firstmove</find>
-      <find>secondmove</find>
       <find>copy</find>
+      <find>secondmove</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,23 +229,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/move.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="104" column="14" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -289,6 +265,23 @@
     <entry file="file://$PROJECT_DIR$/gomoku.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-350" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-952">
+          <caret line="104" column="14" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
