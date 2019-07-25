@@ -1,0 +1,150 @@
+<div class="notebook">
+
+<div class="nb-cell program" name="p1">
+:- module(restaurant, [solve/0]).
+%
+% Start of an implementation of the code at
+% http://www.amzi.com/ExpertSystemsInProlog/
+%
+% Hello!!
+:- dynamic
+	known/3,
+	mealtype/1,
+	price/1,
+    transport/1,
+	traveltime/1,
+    ambience/1,
+	cuisine/1.
+
+:- discontiguous restaurant/1.
+
+restaurant(shah_ghouse) :- 
+    (mealtype(breakfast); mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(expensive); price(anything)),
+    (transport(uber); transport(walk); transport(anything)),
+    (traveltime(quick); traveltime(chill); traveltime(anything)),
+    (ambience(indoor); ambience(anything)),
+    (cuisine(asian); cuisine(anything)).
+
+restaurant(dine_hill) :- 
+    (mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(expensive); price(anything)),
+    (transport(uber); transport(anything)),
+    (traveltime(chill); traveltime(anything)),
+    (ambience(indoor); ambience(anything)),
+    (cuisine(asian); cuisine(middle_eastern); cuisine(anything)).
+
+restaurant(cibo_house) :- 
+    (mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(fancy); price(anything)),
+    (transport(uber); transport(walk); transport(anything)),
+    (traveltime(quick); traveltime(chill); traveltime(anything)),
+    (ambience(indoor); ambience(anything)),
+    (cuisine(european); cuisine(anything)).
+
+restaurant(chutneys) :- 
+    (mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(medium); price(anything)),
+    (transport(uber); transport(walk); transport(anything)),
+    (traveltime(quick); traveltime(chill); traveltime(anything)),
+    (ambience(indoor); ambience(outdoor); ambience(anything)),
+    (cuisine(asian); cuisine(indian); cuisine(anything)).
+
+restaurant(rayalaseema_ruchulu) :- 
+    (mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(expensive); price(anything)),
+    (transport(uber); transport(anything)),
+    (traveltime(quick); traveltime(chill); traveltime(anything)),
+    (ambience(indoor); ambience(outdoor); ambience(anything)),
+    (cuisine(asian); cuisine(indian); cuisine(anything)).
+
+restaurant(ulavacharu) :- 
+    (mealtype(lunch); mealtype(dinner); mealtype(anything)),
+    (price(fancy); price(anything)),
+    (transport(uber); transport(walk); transport(anything)),
+    (traveltime(chill); traveltime(slow); traveltime(anything)),
+    (ambience(indoor); ambience(outdoor); ambience(anything)),
+    (cuisine(asian); cuisine(indian); cuisine(anything)).
+
+restaurant(goodcow) :- 
+    (mealtype(breakfast); mealtype(lunch); mealtype(anything)),
+    (price(expensive); price(anything)),
+    (transport(uber); transport(walk); transport(anything)),
+    (traveltime(chill); traveltime(quick); traveltime(anything)),
+    (ambience(indoor); ambience(anything)),
+    (cuisine(continental); cuisine(european); cuisine(north_american); cuisine(anything)).
+
+mealtype(X) :- menuask(mealtype, X, [breakfast, lunch, dinner, anything]).
+price(X) :- menuask(price, X, [cheap, medium, expensive, fancy, anything]).
+transport(X) :- menuask(transport, X, [walk, uber, anything]).
+traveltime(X) :- menuask(traveltime, X, [urgent, quick, chill, slow, anything]).
+ambience(X) :- menuask(ambience, X, [outdoor, indoor, anything]).
+cuisine(X) :- menuask(cuisine, X, [asian, indian, european, african, middle_eastern, north_american, south_american, continental, anything]).
+
+menuask(Attribute,Value,_):-
+  known(yes,Attribute,Value),       
+  !.
+menuask(Attribute,_,_):-
+  known(yes,Attribute,_),           
+  !, fail.
+
+menuask(Attribute,AskValue,Menu):-
+  question(Attribute),
+  display_menu(Menu),
+  write('Please enter a number: &gt; '),
+  read(Num),nl,
+  pick_menu(Num,AnswerValue,Menu),
+  asserta(known(yes,Attribute,AnswerValue)),
+  AskValue = AnswerValue.           
+
+question(mealtype) :- 
+    nl,write('What type of meal would you like to eat?'),nl.
+question(price) :- 
+    nl,write('What is your price range?'),nl.
+question(transport) :- 
+    nl,write('What mode of transportation from the residence hall would you like to take to the restaurant?'),nl.
+question(traveltime) :- 
+    nl,write('How long are you willing to travel for? Keep in mind that traffic in Hyderabad can get crazy!'),nl.
+question(ambience) :- 
+    nl,write('What kind of setting would you like to dine in?'),nl.
+question(cuisine) :- 
+    nl,write('Choose your cuisine'),nl.
+
+display_menu(Menu):-
+  disp_menu(1,Menu), !.            
+
+disp_menu(_,[]).
+
+disp_menu(N,[Item | Rest]):-        %recursively write the head of the list and disp_menu the tail
+  write(N),write(' : '),write(Item),nl, 
+  NN is N + 1,
+  disp_menu(NN,Rest).
+
+pick_menu(N,Val,Menu):-
+  integer(N),   %make sure user gave a number                    
+  pic_menu(1,N,Val,Menu), !. %if they didn't enter a number, use what they gave as value       
+  pick_menu(Val,Val,_).             
+                                   
+
+pic_menu(_,_,none_of_the_above,[]). %if we've exhausted the list
+pic_menu(N,N, Item, [Item|_]).   %the counter matches the number
+pic_menu(Ctr,N, Val, [_|Rest]):-
+  NextCtr is Ctr + 1,            %try the next one
+  pic_menu(NextCtr, N, Val, Rest).
+
+top_goal(L) :- findall(X, restaurant(X),L),not(length(L,0)).
+
+solve :-
+retractall(known/3),
+top_goal(L),
+write('Here is what we got for you: '), write(L), nl.
+
+solve :-
+write('Sorry, we cannot find any restaurant that meets your needs'), nl.
+</div>
+
+<div class="nb-cell query" name="q1">
+solve
+</div>
+
+</div>
